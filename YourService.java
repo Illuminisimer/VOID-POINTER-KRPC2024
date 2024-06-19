@@ -32,46 +32,35 @@ public class YourService extends KiboRpcService {
         // The mission starts.
         api.startMission();
 
-        // Move to a point.
-        //Point point = new Point(10.9d, -9.92284d, 5.195d);
-        //Quaternion quaternion = new Quaternion(0f, 0f, -0.707f, 0.707f);
-        //api.moveTo(point, quaternion, true);
-
-        // Get a camera image.
-        //Mat image = api.getMatNavCam();
-
         /* *********************************************************************** */
         /* Write your code to recognize type and number of items in the each area! */
         /* *********************************************************************** */
 
-        // When you recognize items, let’s set the type and number.
-        //api.setAreaInfo(1, "item_name", 1);
-
         /* **************************************************** */
         /* Let's move to the each area and recognize the items. */
         /* **************************************************** */
-        //Point point1 = new Point(10.925d, -9.923d, 5.196d);
-        //Quaternion quaternion1 = new Quaternion(0f, 0f, -0.707f, 0.707f);
-        //api.moveTo(point1, quaternion1, true);
+       
         //Astrobee reaches Area 1...
         api.moveTo(new Point(11.35d, -10.1d, 5.190d), new Quaternion(0f, 0f, -0.707f, 0.707f), true);
         //api.flashlightControlFront(0.02f);
         //api.moveTo(new Point(10.925d, -10.923d, 5.196d), new Quaternion(0f, 0f, -0.707f, 0.707f), true);
         Mat image = api.getMatNavCam();
         api.setAreaInfo(1, "item_name", 1);
+        
         //intermediate point
         api.moveTo(new Point(11d, -9.00d, 5.196d), new Quaternion(0f, 0f, 0f, 0.707f), true);
+        
         //Astrobee Reaches Area 2
         api.moveTo(new Point(11d, -9d, 4.305d), new Quaternion(0f, 0.707f, 0f, 0.707f), true);
+        
         //Astroee reaches Area 3
         api.moveTo(new Point(11.3d, -8d, 4.307d), new Quaternion(0f, 0.707f, 0f, 0.707f), true);
+
+        //Astrobee Reaches Area 4
         //api.moveTo(new Point(10d, -7d, 5d), new Quaternion(0f, 0.707f, 0f, 0.707f), true);
 
         //Astrobee moves to astronaut
         //api.moveTo(new Point(11.143d, -6.7607d, 4.9654d), new Quaternion(0f, 0f, 0.707f, 0.707f), true);
-
-        //moveToArea(new Point(10.3, -9.25, 3.76203), new Point(11.55, -8.5, 3.76203));
-
 
         // When you move to the front of the astronaut, report the rounding completion.
         api.reportRoundingCompletion();
