@@ -4,7 +4,9 @@ import android.util.Log;
 import gov.nasa.arc.astrobee.Result;
 import jp.jaxa.iss.kibo.rpc.api.KiboRpcService;
 import jp.jaxa.iss.kibo.rpc.sampleapk.math.QuaternionUtil;
-
+import java.lang.Thread;
+import java.io.*;
+import java.lang.InterruptedException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,28 +41,33 @@ public class YourService extends KiboRpcService {
         /* **************************************************** */
         /* Let's move to the each area and recognize the items. */
         /* **************************************************** */
-       
-        //Astrobee reaches Area 1...
+        
+        //Astrobee reaches Lost Item Area 1.
         api.moveTo(new Point(11.35d, -10.1d, 5.190d), new Quaternion(0f, 0f, -0.707f, 0.707f), true);
-        //api.flashlightControlFront(0.02f);
-        //api.moveTo(new Point(10.925d, -10.923d, 5.196d), new Quaternion(0f, 0f, -0.707f, 0.707f), true);
-        Mat image = api.getMatNavCam();
+        
+        Mat image1 = api.getMatNavCam();
+        api.saveMatImage(image1, "file_name_1");
         api.setAreaInfo(1, "item_name", 1);
-        
-        //intermediate point
-        api.moveTo(new Point(11d, -9.00d, 5.196d), new Quaternion(0f, 0f, 0f, 0.707f), true);
-        
-        //Astrobee Reaches Area 2
-        api.moveTo(new Point(11d, -9d, 4.305d), new Quaternion(0f, 0.707f, 0f, 0.707f), true);
-        
-        //Astroee reaches Area 3
-        api.moveTo(new Point(11.3d, -8d, 4.307d), new Quaternion(0f, 0.707f, 0f, 0.707f), true);
 
-        //Astrobee Reaches Area 4
-        //api.moveTo(new Point(10d, -7d, 5d), new Quaternion(0f, 0.707f, 0f, 0.707f), true);
+        //Intermediate point
+        api.moveTo(new Point(11d, -9.00d, 5.195d), new Quaternion(0f, 0f, 0f, 0.707f), true);
+
+        //Astrobee Reaches Lost Item Area 2
+        api.moveTo(new Point(11d, -9d, 4.305d), new Quaternion(0f, 0.707f, 0f, 0.707f), true);
+
+
+        //Astroee reaches Lost Item Area 3
+        api.moveTo(new Point(11.2d, -7.925d, 4.307d), new Quaternion(0f, 0.707f, 0f, 0.707f), true);
+
+        //Intermediate Point
+        api.moveTo(new Point(10.60d, -7.375d, 4.71d), new Quaternion(1f, 0f, 0f, (float)((0.5)*Math.PI)), true);
+
+        //Astrobee reaches Lost Item Area 4
+        api.moveTo(new Point(10.60d, -6.8d, 5d), new Quaternion(0f, 0f, -1f, 0f), true);
 
         //Astrobee moves to astronaut
-        //api.moveTo(new Point(11.143d, -6.7607d, 4.9654d), new Quaternion(0f, 0f, 0.707f, 0.707f), true);
+        api.moveTo(new Point(11.143d, -6.65d, 5d), new Quaternion(0f, 0f, 0.707f, 0.707f), true);
+
 
         // When you move to the front of the astronaut, report the rounding completion.
         api.reportRoundingCompletion();
