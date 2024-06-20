@@ -67,6 +67,14 @@ public class YourService extends KiboRpcService {
 
         //Astrobee moves to astronaut
         api.moveTo(new Point(11.143d, -6.65d, 5d), new Quaternion(0f, 0f, 0.707f, 0.707f), true);
+        
+        
+        //Astronaut to Area 4
+        //api.moveTo(new Point(10.60d, -6.8d, 5d), new Quaternion(0f, 0f, -1f, 0f), true);
+
+        //Astronaut to Area 3
+        api.moveTo(new Point(11.143d, -8d, 5d), new Quaternion(0f, 0f, 0.707f, 0.707f), true);
+        api.moveTo(new Point(11.2d, -7.925d, 4.307d), new Quaternion(0f, 0.707f, 0f, 0.707f), true);
 
 
         // When you move to the front of the astronaut, report the rounding completion.
